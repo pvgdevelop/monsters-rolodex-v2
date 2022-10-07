@@ -10,12 +10,13 @@ export type Monster = {
   id: string;
   name: string;
   email: string;
+  phone: string;
 };
 
 const App = () => {
-  const [monsters, setMonsters] = useState<Monster[]>();
-  const [filteredMonsters, setFilteredMonsters] = useState(monsters);
   const [searchField, setSearchField] = useState('');
+  const [monsters, setMonsters] = useState<Monster[]>([]);
+  const [filteredMonsters, setFilteredMonsters] = useState(monsters);
   const appTitle = 'Monsters Rolodex';
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const App = () => {
     };
 
     fetchUsers();
-  });
+  }, []);
 
   useEffect(() => {
     const newFilteredMonsters = monsters.filter((monster) => {
